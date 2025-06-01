@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Play Video</title>
+<style>
+    /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 250px;
+        width: 300px;
+        overflow: hidden;
+      }
+      .container {
+        height: 250px;
+        width: 300px;
+        position: relative;
+        overflow: hidden;
+        background-image: url("./bg.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+        /* Shared image style */
+        .container img {
+        position: absolute;
+        max-width: 100%;
+        height: auto;
+    
+        }
+
+        /* Individual Elements – Position them as needed */
+        .ayron {
+        top: 185px;
+        left: 220px;
+        z-index: 7;
+        width:28px;
+        position: absolute;
+        }
+
+        .folick_acid {
+        top: 215px;
+        z-index: 2;
+        width:28px;
+        left: 180px;
+        }
+        
+        .jink {
+        top: 215px;
+        width:30px;
+        left: 240px;
+        z-index: 1;
+        z-index: 2;
+        }
+
+        .logo {
+        
+        width:230px;
+        left:70px;
+        position: absolute;
+        }
+
+        .pack {
+        top: -10px;
+        left: 0px;
+        position: absolute;
+        
+        }
+
+        .rice {
+        position: absolute;
+        left: 0px;
+        
+        }
+
+        .text_1 {
+        top: -4px;
+        position: absolute;
+
+        left: 20px;
+      
+     
+        }
+
+        .text_2 {
+        top: -4px;
+        position: absolute;
+
+        left: 15px;
+      }
+      .h1{
+        position: absolute;
+        display: none;
+       
+      }
+            .h2{
+        position: absolute;
+        display: none;
+       
+      }
+            .h3{
+        position: absolute;
+        display: none;
+       
+      }
+            .h4{
+        position: absolute;
+        display: none;
+       
+      }
+
+        .vitamin_12{
+        top: 180px;
+        z-index: 2;
+        width:25px;
+        left: 260px;
+        position:absolute;
+        }
+
+        .vitamin_a {
+        top: 165px;
+        z-index: 2;
+        width:35px;
+        left: 180px;
+        }
+        .vitamin_b {
+        top: 150px;
+        z-index: 2;
+        width:25px;
+        left: 240px;
+        }
+</style>
+</head>
+<body>
+  <div class="container">
+    <img src="./ayron.png" alt="" class="ayron" />
+    <img src="./folick_acid.png" alt="" class="folick_acid" />
+    <img src="./h1.png" alt="" class="h1" />
+    <img src="./h2.png" alt="" class="h2" />
+    <img src="./h3.png" alt="" class="h3" />
+    <img src="./h4.png" alt="" class="h4" />
+    <img src="./jink.png" alt="" class="jink" />
+    <img src="./logo.png" alt="" class="logo" />
+    <img src="./pack.png" alt="" class="pack" />
+    <img src="./rice.png" alt="" class="rice" />
+    <img src="./text_1.png" alt="" class="text_1" />
+    <img src="./text_2.png" alt="" class="text_2" />
+    <img src="./vitamin-12.png" alt="" class="vitamin_12" />
+    <img src="./vitamin-a.png" alt="" class="vitamin_a" />
+    <img src="./vitamin-b.png" alt="" class="vitamin_b" />
+  </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  const ayron = document.querySelector(".ayron");
+  const folick_acid = document.querySelector(".folick_acid");
+  const h1 = document.querySelector(".h1");
+  const h2 = document.querySelector(".h2");
+  const h3 = document.querySelector(".h3");
+  const h4 = document.querySelector(".h4");
+  const jink = document.querySelector(".jink");
+  const logo = document.querySelector(".logo");
+  const pack = document.querySelector(".pack");
+  const rice = document.querySelector(".rice");
+  const text_1 = document.querySelector(".text_1");
+  const text_2 = document.querySelector(".text_2");
+  const vitamin_12 = document.querySelector(".vitamin_12");
+  const vitamin_a = document.querySelector(".vitamin_a");
+  const vitamin_b = document.querySelector(".vitamin_b");
+
+const tl = gsap.timeline();
+
+// Bounce in the pack
+tl.fromTo(pack,
+  { scale: 1.8 },
+  {
+    scale: 1,
+    duration: 0.8,
+    ease: "bounce.out"
+  }
+)
+
+// Bounce in ayron + vitamins
+.from([ayron, vitamin_12, vitamin_a, vitamin_b, folick_acid, jink], {
+  scale: 0,
+  rotation: 180,
+  duration: 0.7,
+  ease: "back.out(1.7)"
+}, "-=0.4")
+
+// Text animations
+.from(text_1, {
+  duration: 0.5,
+  clipPath: "inset(0 100% 0% 0%)",
+  ease: "power2.out",
+  onStart: () => text_1.style.display = "block"
+})
+
+.from(text_2, {
+  duration: 0.5,
+  clipPath: "inset(0 0% 0% 100%)",
+  ease: "power2.out",
+  onStart: () => text_2.style.display = "block"
+})
+
+// Header text
+.from(h1, {
+  x: -100,
+  duration: 0.3,
+  ease: "power2.out",
+  onStart: () => h1.style.display = "block"
+})
+.from(h2, {
+  x: -120,
+  duration: 0.4,
+  ease: "power2.out",
+  onStart: () => h2.style.display = "block"
+})
+.from(h3, {
+  x: -130,
+  duration: 0.4,
+  ease: "power2.out",
+  onStart: () => h3.style.display = "block"
+})
+.from(h4, {
+  x: -140,
+  duration: 0.4,
+  ease: "power2.out",
+  onStart: () => h4.style.display = "block"
+})
+
+// Logo
+.from(logo, {
+  y: -100,
+  duration: 0.6,
+  ease: "power2.out",
+  onStart: () => logo.style.display = "block"
+});
+
+</script>
+
+</body>
+</html>
